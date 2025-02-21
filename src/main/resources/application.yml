@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: DoctorNowBot
+  security:
+    oauth2:
+      client:
+        registration:
+          doctornowbot:
+            authorization-grant-type: client_credentials
+            client-secret: ${CLIENT_SECRET}
+            provider: keycloak
+            scope:
+              - openid
+        provider:
+          keycloak:
+            issuer-uri: https://auth.pikaboy.nyc/realms/newyork
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.pikaboy.nyc/realms/newyork
