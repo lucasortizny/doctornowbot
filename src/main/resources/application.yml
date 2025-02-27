@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: DoctorNowBot
@@ -17,3 +18,5 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://auth.pikaboy.nyc/realms/newyork
+doctornow:
+  discord-token: ${DISCORD_TOKEN}
