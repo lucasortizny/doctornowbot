@@ -8,7 +8,6 @@
         <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <groupId>nyc.pikaboy</groupId>
     <artifactId>DoctorNowBot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
