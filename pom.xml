@@ -10,7 +10,7 @@
     </parent>
     <groupId>nyc.pikaboy</groupId>
     <artifactId>DoctorNowBot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>DoctorNowBot</name>
     <description>DoctorNowBot</description>
     <url/>
@@ -45,6 +45,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.dv8tion</groupId>
+            <artifactId>JDA</artifactId>
+            <version>5.3.0</version>
         </dependency>
 
         <dependency>
