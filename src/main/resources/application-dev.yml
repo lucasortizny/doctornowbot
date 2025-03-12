@@ -1,7 +1,12 @@
 spring:
+  datasource:
+    username: pkbny_usr
+    url: jdbc:postgresql://localhost:5432/pikaboyny_dev
   security:
     oauth2:
       client:
         registration:
           doctornowbot:
             client-id: doctornow-dev
+doctornow:
+  guild-ids: ["1044843245408112672"]
