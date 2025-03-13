@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class DoctorNowDiscordInitializer {
     private final DoctorNowDiscordProperties properties;
-    private final DoctorNowEventListener doctorNowEventListener;
     @Bean
     @SneakyThrows
     public JDA discordBot(){
@@ -23,7 +22,6 @@ public class DoctorNowDiscordInitializer {
         JDA jda;
         jda = JDABuilder
                 .createLight(properties.getDiscordToken())
-                .addEventListeners(doctorNowEventListener)
 //                .setActivity(Activity.of(
 //                        cheezlbotConfiguration.getDiscordConfiguration().getActivityType(),
 //                        cheezlbotConfiguration.getDiscordConfiguration().getActivityMessage()

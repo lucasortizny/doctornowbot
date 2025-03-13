@@ -4,6 +4,8 @@ spring:
     name: DoctorNowBot
   datasource:
     password: ${DB_PASS}
+  jpa:
+    database: postgresql
   security:
     oauth2:
       client:

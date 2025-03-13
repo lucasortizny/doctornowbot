@@ -1,6 +1,8 @@
 package nyc.pikaboy.doctornowbot.eventlisteners;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventCreateEvent;
 import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventDeleteEvent;
 import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventUserAddEvent;
@@ -14,6 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class DoctorNowEventListener extends ListenerAdapter {
+    private final JDA jda;
+
+    @PostConstruct
+    private void init() {
+        jda.addEventListener(this);
+    }
+
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         super.onMessageReceived(event);
