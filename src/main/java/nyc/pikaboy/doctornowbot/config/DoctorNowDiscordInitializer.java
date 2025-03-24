@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-import nyc.pikaboy.doctornowbot.eventlisteners.DoctorNowEventListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,16 +32,8 @@ public class DoctorNowDiscordInitializer {
                         GatewayIntent.GUILD_PRESENCES
                 )
 //                .enableCache(CacheFlag.ACTIVITY)
-                .build().awaitReady();
-//        log.debug("Registering different commands.");
-//        properties.getGuildIds().forEach(guild -> {
-//            jda.getGuildById(Long.parseLong(guild))
-//                    .updateCommands()
-//        });
-//        jda.getGuildById(cheezlbotConfiguration.getGuildId())
-//                .updateCommands()
-//                .addCommands(slashCommandConfiguration.slashCommands())
-//                .queue();
+                .build()
+                .awaitReady();
         return jda;
     }
 }

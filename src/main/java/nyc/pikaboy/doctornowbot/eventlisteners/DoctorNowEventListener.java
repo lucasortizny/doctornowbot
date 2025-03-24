@@ -8,8 +8,10 @@ import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventDeleteEvent
 import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventUserAddEvent;
 import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventUserRemoveEvent;
 import net.dv8tion.jda.api.events.guild.scheduledevent.update.*;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import nyc.pikaboy.doctornowbot.slashcommands.SlashCommandHandler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +19,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class DoctorNowEventListener extends ListenerAdapter {
     private final JDA jda;
+    private final SlashCommandHandler slashCommandHandler;
 
     @PostConstruct
     private void init() {
         jda.addEventListener(this);
+    }
+
+    @Override
+    public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
+        slashCommandHandler.slashCommandEntryPoint(event);
     }
 
     @Override
