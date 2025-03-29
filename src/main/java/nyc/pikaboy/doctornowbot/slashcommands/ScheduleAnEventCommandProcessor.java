@@ -11,17 +11,17 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.restaction.interactions.ReplyCallbackAction;
 import net.dv8tion.jda.api.utils.data.DataObject;
 import nyc.pikaboy.doctornowbot.config.DoctorNowDiscordProperties;
-import org.springframework.cglib.core.Local;
+import nyc.pikaboy.doctornowbot.enums.SlashCommandIdentifier;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 @Component
 @RequiredArgsConstructor
 public class ScheduleAnEventCommandProcessor implements SlashCommandProcessor {
     private final JDA jda;
+    private final SlashCommandIdentifier commandIdentifier = SlashCommandIdentifier.SCHEDULE_EVENT;
     private final DoctorNowDiscordProperties properties;
     @PostConstruct
     void init() {
@@ -62,7 +62,7 @@ public class ScheduleAnEventCommandProcessor implements SlashCommandProcessor {
 
     @Override
     public DataObject command() {
-        return Commands.slash("schedule-an-event", "Schedule an Event")
+        return Commands.slash(commandIdentifier.getIdentifier(), "Schedule an Event")
                 .addOption(OptionType.STRING, "event-name", "Name of Event", true)
                 .addOption(OptionType.STRING, "start-time", "Start Time", true)
                 .addOption(OptionType.STRING, "end-time", "End Time", false)

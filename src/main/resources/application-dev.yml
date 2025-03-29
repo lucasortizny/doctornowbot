@@ -1,6 +1,6 @@
 spring:
   datasource:
-    username: pkbny_usr
+    username: pkbny_usr_dev
     url: jdbc:postgresql://localhost:5432/pikaboyny_dev
   security:
     oauth2:

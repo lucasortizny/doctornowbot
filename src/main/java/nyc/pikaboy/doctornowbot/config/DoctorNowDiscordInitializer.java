@@ -21,17 +21,12 @@ public class DoctorNowDiscordInitializer {
         JDA jda;
         jda = JDABuilder
                 .createLight(properties.getDiscordToken())
-//                .setActivity(Activity.of(
-//                        cheezlbotConfiguration.getDiscordConfiguration().getActivityType(),
-//                        cheezlbotConfiguration.getDiscordConfiguration().getActivityMessage()
-//                ).withState(cheezlbotConfiguration.getDiscordConfiguration().getActivityDescription()))
                 .enableIntents(
                         GatewayIntent.MESSAGE_CONTENT,
                         GatewayIntent.GUILD_MESSAGES,
                         GatewayIntent.GUILD_MEMBERS,
                         GatewayIntent.GUILD_PRESENCES
                 )
-//                .enableCache(CacheFlag.ACTIVITY)
                 .build()
                 .awaitReady();
         return jda;
