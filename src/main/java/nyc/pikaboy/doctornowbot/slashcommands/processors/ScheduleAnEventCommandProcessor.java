@@ -41,14 +41,15 @@ public class ScheduleAnEventCommandProcessor implements SlashCommandProcessor {
         OptionMapping channelSelection = event.getOption("event-channel");
         ReplyCallbackAction replyCallbackAction = event.deferReply(true);
         replyCallbackAction.queue();
+        //TODO: Create a ZoneId to bind to the Configuration Options
         if (permissionService.hasPermissions(event.getUser(), AdminRoleCode.EM, AdminRoleCode.MOD, AdminRoleCode.ADM)) {
             if (channelSelection == null) { // VC based event
                 event.getGuild()
                         .createScheduledEvent(
                                 eventNameSelection.getAsString(),
                                 "Discord",
-                                LocalDateTime.parse(startTimeSelection.getAsString()).atZone(ZoneId.systemDefault()).toOffsetDateTime(),
-                                LocalDateTime.parse(endTimeSelection.getAsString()).atZone(ZoneId.systemDefault()).toOffsetDateTime()
+                                LocalDateTime.parse(startTimeSelection.getAsString()).atZone(ZoneId.of("America/New_York")).toOffsetDateTime(),
+                                LocalDateTime.parse(endTimeSelection.getAsString()).atZone(ZoneId.of("America/New_York")).toOffsetDateTime()
                         )
                         .queue();
             } else {
@@ -56,7 +57,7 @@ public class ScheduleAnEventCommandProcessor implements SlashCommandProcessor {
                         .createScheduledEvent(
                                 eventNameSelection.getAsString(),
                                 channelSelection.getAsChannel().asAudioChannel(),
-                                LocalDateTime.parse(startTimeSelection.getAsString()).atZone(ZoneId.systemDefault()).toOffsetDateTime()
+                                LocalDateTime.parse(startTimeSelection.getAsString()).atZone(ZoneId.of("America/New_York")).toOffsetDateTime()
                         )
                         .queue();
             }
