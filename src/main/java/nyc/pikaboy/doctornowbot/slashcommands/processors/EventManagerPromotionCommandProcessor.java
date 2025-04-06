@@ -1,4 +1,4 @@
-package nyc.pikaboy.doctornowbot.slashcommands;
+package nyc.pikaboy.doctornowbot.slashcommands.processors;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -38,8 +38,13 @@ public class EventManagerPromotionCommandProcessor implements SlashCommandProces
             event.getInteraction().getHook().editOriginal("You need to specify a user").queue();
         }
         else {
-            permissionService.grantPermission(option.getAsUser(), AdminRoleCode.EM);
-            event.getInteraction().getHook().editOriginal("Event Submitted successfully.").queue();
+            if (permissionService.hasPermissions(event.getUser(), AdminRoleCode.ADM, AdminRoleCode.MOD)) {
+                permissionService.grantPermission(option.getAsUser(), AdminRoleCode.EM);
+                event.getInteraction().getHook().editOriginal("Permission Granted successfully.").queue();
+            }
+            else {
+                event.getInteraction().getHook().editOriginal("You must be granted ADM or MOD access.").queue();
+            }
         }
     }
 

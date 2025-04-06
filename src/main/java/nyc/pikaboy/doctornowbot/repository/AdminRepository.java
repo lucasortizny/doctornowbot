@@ -6,7 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
+
 @Repository
 public interface AdminRepository extends JpaRepository<AdministratorEntity, String> {
     AdministratorEntity findByUserIdentifierAndAdminRoleCodeEquals(String userIdentifier, AdminRoleCode adminRoleCode);
+    boolean existsAdministratorEntitiesByAdminRoleCodeInAndUserIdentifierEquals(Collection<AdminRoleCode> adminRoleCode, String userIdentifier);
 }
